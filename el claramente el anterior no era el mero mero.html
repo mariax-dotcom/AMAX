@@ -10,9 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ==========================================
-           VARIABLES Y ESTILOS GLOBALES (DISEÑO PRINCIPIANTE)
-           ========================================== */
         :root {
             --caramel: #BF7E46;
             --papaya-whip: #FBEDD6;
@@ -36,7 +33,6 @@
             min-height: 100vh;
         }
 
-        /* Estructura fija sin desplazamientos verticales locos */
         main {
             flex: 1;
             margin-top: 80px;
@@ -46,7 +42,6 @@
             overflow: hidden;
         }
 
-        /* Secciones de pestañas directas (Sin transiciones) */
         .page {
             display: none;
             width: 100%;
@@ -59,7 +54,6 @@
             display: block;
         }
 
-        /* Botones Planos Básicos (Sin animaciones) */
         .btn-custom {
             background-color: var(--caramel);
             color: var(--white);
@@ -72,9 +66,6 @@
             display: inline-block;
         }
 
-        /* ==========================================
-           HEADER / ENCABEZADO
-           ========================================== */
         header {
             position: fixed;
             top: 0;
@@ -141,9 +132,6 @@
             color: var(--caramel);
         }
 
-        /* ==========================================
-           PÁGINA: INICIO
-           ========================================== */
         .hero-section {
             background-color: var(--baby-blue);
             border-radius: 10px;
@@ -182,7 +170,6 @@
             padding-left: 10px;
         }
 
-        /* Grid de Tarjetas Simple */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -238,7 +225,6 @@
             margin-bottom: 15px;
         }
 
-        /* PANEL DE PROGRESO INTEGRADO EN INICIO */
         .progreso-global-box {
             background-color: var(--white);
             border: 2px solid var(--caramel);
@@ -275,9 +261,7 @@
             font-weight: 600;
         }
 
-        /* ==========================================
-           PÁGINA: RETOS
-           ========================================== */
+        /*  PÁGINA: RETOS */
         .filter-container {
             display: flex;
             gap: 5px;
@@ -304,7 +288,6 @@
             justify-content: space-between;
         }
 
-        /* Ventana emergente lateral (Básica) */
         .drawer {
             position: fixed;
             top: 0;
@@ -344,9 +327,7 @@
             display: block;
         }
 
-        /* ==========================================
-           PÁGINA: FRASES
-           ========================================== */
+        /* PÁGINA: FRASES */
         .phrases-container {
             background-color: var(--baby-blue);
             padding: 40px;
@@ -367,9 +348,7 @@
             margin-bottom: 20px;
         }
 
-        /* ==========================================
-           PÁGINA: NOSOTROS
-           ========================================== */
+        /* PÁGINA: NOSOTROS */
         .about-container {
             background: var(--white);
             border-radius: 10px;
@@ -395,9 +374,7 @@
             margin-top: 15px;
         }
 
-        /* ==========================================
-           FOOTER / PIE DE PÁGINA
-           ========================================== */
+        /* PIE DE PÁGINA */
         footer {
             background-color: var(--caramel);
             color: var(--white);
@@ -417,7 +394,6 @@
             font-size: 0.8rem;
         }
 
-        /* Responsive Básico */
         @media (max-width: 600px) {
             header { flex-direction: column; height: auto; padding: 10px; }
             main { margin-top: 120px; height: calc(100vh - 200px); }
@@ -431,7 +407,6 @@
 </head>
 <body>
 
-    <!-- CABECERA -->
     <header>
         <div class="brand-container">
             <div class="logo-placeholder">
@@ -450,10 +425,9 @@
         </nav>
     </header>
 
-    <!-- CUERPO PRINCIPAL -->
     <main>
         
-        <!-- SECCIÓN: INICIO -->
+        <!-- INICIO -->
         <section id="inicio" class="page active">
             <div class="hero-section">
                 <div class="hero-content">
@@ -464,7 +438,7 @@
                 <img src="logros.png" alt="Logros" class="hero-image" onerror="this.style.display='none';">
             </div>
 
-            <!-- CUADRO DE PROGRESO HISTÓRICO -->
+            
             <div class="progreso-global-box">
                 <div class="progreso-header">
                     <span>Tu Progreso Guardado</span>
@@ -543,7 +517,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: RETOS -->
+        <!-- RETOS -->
         <section id="retos" class="page">
             <h2 class="section-title">Listado de Retos</h2>
             <div class="filter-container">
@@ -559,7 +533,7 @@
             <div class="grid-container" id="contenedor-retos"></div>
         </section>
 
-        <!-- SECCIÓN: FRASES -->
+        <!-- FRASES -->
         <section id="frases" class="page">
             <div class="phrases-container">
                 <div class="phrase-card">
@@ -569,7 +543,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: NOSOTROS -->
+        <!-- NOSOTROS -->
         <section id="nosotros" class="page">
             <div class="about-container">
                 <div class="about-block">
@@ -595,7 +569,7 @@
 
     </main>
 
-    <!-- VENTANA EMERGENTE LATERAL -->
+    <!-- VENTANA EMERGENTE -->
     <div class="backdrop" id="backdrop" onclick="closeDrawer()"></div>
     <div class="drawer" id="drawer">
         <button class="drawer-close" onclick="closeDrawer()">X</button>
@@ -620,9 +594,7 @@
         <div style="font-size:0.8rem; margin-top:5px;">AMAX - Retos de Crecimiento</div>
     </footer>
 
-    <!-- LOGICA JAVASCRIPT -->
     <script>
-        // ARREGLO DE FRASES
         const frases = [
             "El viento está a favor; hoy es el día para acelerar.",
             "Saborea este momento: el esfuerzo del pasado es el éxito de hoy.",
@@ -676,7 +648,6 @@
             "Todo lo que necesitas para resolver el siguiente paso ya está dentro de ti"
         ];
 
-        // RETOS EN BRUTO
         const rawChallenges = {
             Social: ["Habla con una persona nueva", "Haz un cumplido sincero", "Ayuda a alguien hoy", "Inicia una conversación", "Pasa un día sin discutir", "Sonríe a 5 personas", "Llama a un familiar", "Escucha sin interrumpir", "Haz una actividad en grupo", "Agradece algo a alguien", "Invita a alguien a salir", "Comparte una idea positiva", "Conoce un hobby de otra persona", "Saluda primero todo el día", "Escribe un mensaje bonito"],
             Salud: ["Camina 10,000 pasos", "Toma 2 litros de agua", "Haz ejercicio 20 minutos", "Duerme 8 horas", "No tomes refresco hoy", "Haz estiramientos", "Come fruta en el día", "Evita comida chatarra", "Medita 10 minutos", "Haz una rutina de respiración", "Corre durante 15 minutos", "Descansa de pantallas 1 hora", "Mantén buena postura", "Sube escaleras en vez de elevador", "Come verduras en todas tus comidas"],
@@ -691,7 +662,7 @@
         let listadeRetos = [];
         let progresoData = { puntos: 0, completados: [] };
 
-        // Construcción estructurada del listado de retos
+        
         let numId = 1;
         Object.keys(rawChallenges).forEach(cat => {
             rawChallenges[cat].forEach(title => {
@@ -706,7 +677,7 @@
             });
         });
 
-        // NAVEGACIÓN ENTRE PESTAÑAS
+        
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('nav ul li a').forEach(l => l.classList.remove('active'));
@@ -718,7 +689,7 @@
             closeDrawer();
         }
 
-        // RENDER DE TARJETAS EN SECCIÓN RETOS
+    
         function renderRetos(filtro = 'todos') {
             const contenedor = document.getElementById('contenedor-retos');
             contenedor.innerHTML = '';
@@ -753,7 +724,7 @@
             renderRetos(cat);
         }
 
-        // MANEJO DE VENTANA LATERAL
+        
         function openDrawer(id) {
             const r = listadeRetos.find(item => item.id === id);
             if(!r) return;
@@ -784,7 +755,7 @@
             document.getElementById('backdrop').classList.remove('show');
         }
 
-        // MARCAR UN RETO COMO HECHO
+        
         function marcarCompleto(id) {
             if(progresoData.completados.includes(id)) return;
             
@@ -800,12 +771,12 @@
             closeDrawer();
         }
 
-        // ACTUALIZAR INTERFAZ DE PROGRESO GLOBAL
+        
         function actualizarCuadroProgreso() {
             document.getElementById('puntos-val').innerText = progresoData.puntos;
             document.getElementById('retos-val').innerText = progresoData.completados.length;
 
-            // El porcentaje se basa en completar el total de retos existentes (110 en total)
+            
             const pct = Math.min(Math.round((progresoData.completados.length / listadeRetos.length) * 100), 100);
             document.getElementById('progreso-porcentaje').innerText = pct + "%";
             document.getElementById('progreso-barra').style.width = pct + "%";
@@ -817,7 +788,7 @@
             document.getElementById('txt-frase').innerText = `"${frases[rand]}"`;
         }
 
-        // INICIALIZACIÓN GENERAL DE LA APP
+    
         window.onload = function() {
             // Contador de visitas
             let numVisitas = localStorage.getItem('amax_visitas_v2') || 0;
