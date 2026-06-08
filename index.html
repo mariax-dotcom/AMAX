@@ -1,15 +1,19 @@
 <!DOCTYPE html>
+<!--PROGRAMA AMAX -->
+<!--ALUMNO:Cuevas -->
+<!--FECHA: 25 de mayo de 2026 -->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMAX - Retos y Crecimiento Personal</title>
-    <!-- Tipografía Externa -->
+    <!-- Tipografía en Linea -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /*  VARIABLES Y ESTILOS */
         :root {
             --caramel: #BF7E46;
             --papaya-whip: #FBEDD6;
@@ -66,6 +70,7 @@
             display: inline-block;
         }
 
+        /* ENCABEZADO */
         header {
             position: fixed;
             top: 0;
@@ -132,6 +137,7 @@
             color: var(--caramel);
         }
 
+        /* INICIO */
         .hero-section {
             background-color: var(--baby-blue);
             border-radius: 10px;
@@ -170,6 +176,7 @@
             padding-left: 10px;
         }
 
+        /* Tarjetas Inicio  */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -225,6 +232,7 @@
             margin-bottom: 15px;
         }
 
+        /* Barra Progreso */
         .progreso-global-box {
             background-color: var(--white);
             border: 2px solid var(--caramel);
@@ -261,7 +269,7 @@
             font-weight: 600;
         }
 
-        /*  PÁGINA: RETOS */
+        /* RETOS */
         .filter-container {
             display: flex;
             gap: 5px;
@@ -288,6 +296,7 @@
             justify-content: space-between;
         }
 
+        /* Ventana lateral*/
         .drawer {
             position: fixed;
             top: 0;
@@ -327,7 +336,7 @@
             display: block;
         }
 
-        /* PÁGINA: FRASES */
+        /* FRASES */
         .phrases-container {
             background-color: var(--baby-blue);
             padding: 40px;
@@ -348,7 +357,7 @@
             margin-bottom: 20px;
         }
 
-        /* PÁGINA: NOSOTROS */
+        /* NOSOTROS */
         .about-container {
             background: var(--white);
             border-radius: 10px;
@@ -391,7 +400,7 @@
 
         .visitor-counter {
             margin-top: 5px;
-            font-size: 0.8rem;
+            font-size: 1.8rem;
         }
 
         @media (max-width: 600px) {
@@ -407,6 +416,7 @@
 </head>
 <body>
 
+    <!-- CABECERA -->
     <header>
         <div class="brand-container">
             <div class="logo-placeholder">
@@ -419,12 +429,13 @@
                 <li><a id="nav-inicio" onclick="showPage('inicio')" class="active">Inicio</a></li>
                 <li><a id="nav-retos" onclick="showPage('retos')">Retos</a></li>
                 <li><a id="nav-frases" onclick="showPage('frases')">Frases</a></li>
-                <li><a href="https://forms.gle/Am74QnHJNTXcSwiVA" target="_blank">Blog</a></li>
+                <li><a href="https://share.google/IeAvCN7SIBswtZZes" target="_blank">Blog</a></li>
                 <li><a id="nav-nosotros" onclick="showPage('nosotros')">Nosotros</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- CUERPO PRINCIPAL -->
     <main>
         
         <!-- INICIO -->
@@ -433,12 +444,12 @@
                 <div class="hero-content">
                     <h1>Completa retos, mejora cada día</h1>
                     <p>Supera tus objetivos diarios diseñados para expandir tu mente, cuidar tu cuerpo y potenciar tu creatividad.</p>
-                    <button class="btn-custom" onclick="showPage('retos')">¡Empieza ahora!</button>
+                       <button class="btn-custom" onclick="showPage('retos')">¡Empieza ahora!</button>
                 </div>
                 <img src="logros.png" alt="Logros" class="hero-image" onerror="this.style.display='none';">
             </div>
 
-            
+            <!-- BARRA DE PROGRESO -->
             <div class="progreso-global-box">
                 <div class="progreso-header">
                     <span>Tu Progreso Guardado</span>
@@ -474,7 +485,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-emoji">🫱🏼&#129309;</div>
+                    <div class="card-emoji">🫱🏼</div>
                     <div class="card-title">Social</div>
                     <div class="tag-container">
                         <span class="tag">Social</span>
@@ -569,7 +580,7 @@
 
     </main>
 
-    <!-- VENTANA EMERGENTE -->
+    <!-- VENTANA EMERGENTE LATERAL -->
     <div class="backdrop" id="backdrop" onclick="closeDrawer()"></div>
     <div class="drawer" id="drawer">
         <button class="drawer-close" onclick="closeDrawer()">X</button>
@@ -587,14 +598,16 @@
             <a onclick="showPage('inicio')">Inicio</a> | 
             <a onclick="showPage('retos')">Retos</a> | 
             <a onclick="showPage('frases')">Frases</a> | 
-            <a href="https://forms.gle/Am74QnHJNTXcSwiVA" target="_blank">Blog</a> | 
+            <a href="https://share.google/IeAvCN7SIBswtZZes" target="_blank">Blog</a> | 
             <a onclick="showPage('nosotros')">Nosotros</a>
         </div>
         <div class="visitor-counter" id="visitas">Visitas al sitio: 1</div>
         <div style="font-size:0.8rem; margin-top:5px;">AMAX - Retos de Crecimiento</div>
     </footer>
 
+    <!-- LOGICA JAVASCRIPT -->
     <script>
+        // ARREGLO DE FRASES
         const frases = [
             "El viento está a favor; hoy es el día para acelerar.",
             "Saborea este momento: el esfuerzo del pasado es el éxito de hoy.",
@@ -648,6 +661,7 @@
             "Todo lo que necesitas para resolver el siguiente paso ya está dentro de ti"
         ];
 
+        // RETOS EN BRUTO
         const rawChallenges = {
             Social: ["Habla con una persona nueva", "Haz un cumplido sincero", "Ayuda a alguien hoy", "Inicia una conversación", "Pasa un día sin discutir", "Sonríe a 5 personas", "Llama a un familiar", "Escucha sin interrumpir", "Haz una actividad en grupo", "Agradece algo a alguien", "Invita a alguien a salir", "Comparte una idea positiva", "Conoce un hobby de otra persona", "Saluda primero todo el día", "Escribe un mensaje bonito"],
             Salud: ["Camina 10,000 pasos", "Toma 2 litros de agua", "Haz ejercicio 20 minutos", "Duerme 8 horas", "No tomes refresco hoy", "Haz estiramientos", "Come fruta en el día", "Evita comida chatarra", "Medita 10 minutos", "Haz una rutina de respiración", "Corre durante 15 minutos", "Descansa de pantallas 1 hora", "Mantén buena postura", "Sube escaleras en vez de elevador", "Come verduras en todas tus comidas"],
@@ -662,7 +676,7 @@
         let listadeRetos = [];
         let progresoData = { puntos: 0, completados: [] };
 
-        
+        // Construcción estructurada del listado de retos
         let numId = 1;
         Object.keys(rawChallenges).forEach(cat => {
             rawChallenges[cat].forEach(title => {
@@ -677,7 +691,7 @@
             });
         });
 
-        
+        // NAVEGACIÓN ENTRE PESTAÑAS
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('nav ul li a').forEach(l => l.classList.remove('active'));
@@ -689,7 +703,7 @@
             closeDrawer();
         }
 
-    
+        // TARJETAS EN SECCIÓN RETOS
         function renderRetos(filtro = 'todos') {
             const contenedor = document.getElementById('contenedor-retos');
             contenedor.innerHTML = '';
@@ -724,7 +738,7 @@
             renderRetos(cat);
         }
 
-        
+        // MANEJO DE VENTANA LATERAL
         function openDrawer(id) {
             const r = listadeRetos.find(item => item.id === id);
             if(!r) return;
@@ -755,7 +769,7 @@
             document.getElementById('backdrop').classList.remove('show');
         }
 
-        
+        // MARCAR UN RETO COMO HECHO
         function marcarCompleto(id) {
             if(progresoData.completados.includes(id)) return;
             
@@ -763,7 +777,7 @@
             progresoData.completados.push(id);
             progresoData.puntos += r.puntos;
 
-            // Guardar progreso directo
+            // Guardar progreso
             localStorage.setItem('amax_progreso_v2', JSON.stringify(progresoData));
             
             actualizarCuadroProgreso();
@@ -771,24 +785,24 @@
             closeDrawer();
         }
 
-        
+        // ACTUALIZAR INTERFAZ DE PROGRESO
         function actualizarCuadroProgreso() {
             document.getElementById('puntos-val').innerText = progresoData.puntos;
             document.getElementById('retos-val').innerText = progresoData.completados.length;
 
-            
+            // Guardar Progreso 
             const pct = Math.min(Math.round((progresoData.completados.length / listadeRetos.length) * 100), 100);
             document.getElementById('progreso-porcentaje').innerText = pct + "%";
             document.getElementById('progreso-barra').style.width = pct + "%";
         }
 
-        // FRASES ALEATORIAS
+        // FRASES ALEATORIAS 
         function nuevaFrase() {
             const rand = Math.floor(Math.random() * frases.length);
             document.getElementById('txt-frase').innerText = `"${frases[rand]}"`;
         }
 
-    
+        // INICIALIZACIÓN GENERAL DE LA APP
         window.onload = function() {
             // Contador de visitas
             let numVisitas = localStorage.getItem('amax_visitas_v2') || 0;
@@ -796,7 +810,7 @@
             localStorage.setItem('amax_visitas_v2', numVisitas);
             document.getElementById('visitas').innerText = "Visitas al sitio: " + numVisitas;
 
-            // Cargar progreso del almacenamiento
+            // Cargar progreso del almacenamiento 
             const progresoGuardado = localStorage.getItem('amax_progreso_v2');
             if(progresoGuardado) {
                 progresoData = JSON.parse(progresoGuardado);
