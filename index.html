@@ -605,9 +605,8 @@
         <div style="font-size:0.8rem; margin-top:5px;">AMAX - Retos de Crecimiento</div>
     </footer>
 
-    <!-- LOGICA JAVASCRIPT -->
     <script>
-        // ARREGLO DE FRASES
+        // FRASES
         const frases = [
             "El viento está a favor; hoy es el día para acelerar.",
             "Saborea este momento: el esfuerzo del pasado es el éxito de hoy.",
@@ -661,7 +660,7 @@
             "Todo lo que necesitas para resolver el siguiente paso ya está dentro de ti"
         ];
 
-        // RETOS EN BRUTO
+        // RETOS
         const rawChallenges = {
             Social: ["Habla con una persona nueva", "Haz un cumplido sincero", "Ayuda a alguien hoy", "Inicia una conversación", "Pasa un día sin discutir", "Sonríe a 5 personas", "Llama a un familiar", "Escucha sin interrumpir", "Haz una actividad en grupo", "Agradece algo a alguien", "Invita a alguien a salir", "Comparte una idea positiva", "Conoce un hobby de otra persona", "Saluda primero todo el día", "Escribe un mensaje bonito"],
             Salud: ["Camina 10,000 pasos", "Toma 2 litros de agua", "Haz ejercicio 20 minutos", "Duerme 8 horas", "No tomes refresco hoy", "Haz estiramientos", "Come fruta en el día", "Evita comida chatarra", "Medita 10 minutos", "Haz una rutina de respiración", "Corre durante 15 minutos", "Descansa de pantallas 1 hora", "Mantén buena postura", "Sube escaleras en vez de elevador", "Come verduras en todas tus comidas"],
@@ -676,7 +675,6 @@
         let listadeRetos = [];
         let progresoData = { puntos: 0, completados: [] };
 
-        // Construcción estructurada del listado de retos
         let numId = 1;
         Object.keys(rawChallenges).forEach(cat => {
             rawChallenges[cat].forEach(title => {
@@ -691,6 +689,27 @@
             });
         });
 
+        // DESHACER EL RETO
+        function deshacerCompleto(id) {
+            const index = progresoData.completados.indexOf(id);
+            if (index === -1) return; 
+
+            const r = listadeRetos.find(item => item.id === id);
+            if (!r) return;
+
+            progresoData.completados.splice(index, 1);
+            progresoData.puntos -= r.puntos;
+
+            localStorage.setItem('amax_progreso_v2', JSON.stringify(progresoData));
+            actualizarCuadroProgreso();
+            
+            const activeFilterBtn = document.querySelector('.filter-btn.active');
+            const currentFilter = activeFilterBtn ? activeFilterBtn.innerText : 'Todos';
+            renderRetos(currentFilter === 'Todos' ? 'todos' : currentFilter);
+            
+            closeDrawer();
+        }
+
         // NAVEGACIÓN ENTRE PESTAÑAS
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -703,7 +722,7 @@
             closeDrawer();
         }
 
-        // TARJETAS EN SECCIÓN RETOS
+        // TARJETAS DE RETOS
         function renderRetos(filtro = 'todos') {
             const contenedor = document.getElementById('contenedor-retos');
             contenedor.innerHTML = '';
@@ -737,7 +756,7 @@
             event.target.classList.add('active');
             renderRetos(cat);
         }
-
+        
         // MANEJO DE VENTANA LATERAL
         function openDrawer(id) {
             const r = listadeRetos.find(item => item.id === id);
@@ -750,9 +769,10 @@
             
             const btn = document.getElementById('dr-btn-completar');
             if(progresoData.completados.includes(r.id)) {
-                btn.innerText = "¡Reto ya completado!";
-                btn.disabled = true;
-                btn.style.backgroundColor = "#aaa";
+                btn.innerText = "Deshacer Reto";
+                btn.disabled = false;
+                btn.style.backgroundColor = "#D9534F"; // Rojo sutil de cancelación
+                btn.onclick = function() { deshacerCompleto(r.id); };
             } else {
                 btn.innerText = "Completar Reto";
                 btn.disabled = false;
@@ -781,7 +801,11 @@
             localStorage.setItem('amax_progreso_v2', JSON.stringify(progresoData));
             
             actualizarCuadroProgreso();
-            renderRetos();
+            
+            const activeFilterBtn = document.querySelector('.filter-btn.active');
+            const currentFilter = activeFilterBtn ? activeFilterBtn.innerText : 'Todos';
+            renderRetos(currentFilter === 'Todos' ? 'todos' : currentFilter);
+            
             closeDrawer();
         }
 
